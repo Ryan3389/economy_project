@@ -4,8 +4,7 @@ pull:
       branch: "main"
 
   - prefect.deployments.steps.run_shell_script:
+      directory: backend
       script: |
-        pip install -U uv
-        cd backend
+        python -m pip install -U uv
         uv sync --frozen
-        export PATH="$(pwd)/.venv/bin:$PATH"
