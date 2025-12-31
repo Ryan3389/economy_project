@@ -1,11 +1,11 @@
 pull:
   - prefect.deployments.steps.git_clone:
+      id: clone
       repository: "https://github.com/Ryan3389/economy_project.git"
       branch: "main"
 
   - prefect.deployments.steps.run_shell_script:
+      directory: "{{ clone.directory }}/backend"
       script: |
-        pwd
-        ls
         python -m pip install -U uv
-        uv sync --frozen
+        uv pip install --system -e .
