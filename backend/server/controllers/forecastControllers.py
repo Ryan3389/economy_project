@@ -1,6 +1,6 @@
-from server.db.db import get_connection
+from backend.server.db.db import get_connection
 import pandas as pd
-from server.forecasts.services.model_loader import load_model
+from backend.server.forecasts.services.model_loader import load_model
 from datetime import datetime, timezone
 from decimal import Decimal
 

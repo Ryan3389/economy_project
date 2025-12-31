@@ -1,5 +1,5 @@
-from server.db.db import get_connection
-from server.schemas.planModels import PlanningInput
+from backend.server.db.db import get_connection
+from backend.server.schemas.planModels import PlanningInput
 
 def get_trend_meaning(indicator):
     match indicator:

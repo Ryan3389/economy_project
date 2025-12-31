@@ -1,5 +1,5 @@
 import psycopg2
-from server.config.config import db_dsn
+from backend.server.config.config import db_dsn
 # from config.config import db_dsn
 
 def get_connection():
