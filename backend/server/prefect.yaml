@@ -14,8 +14,9 @@ push: null
 
 # pull section allows you to provide instructions for cloning this project in remote locations
 pull:
-- prefect.deployments.steps.set_working_directory:
-    directory:  C:\personal_projects\finance_project\backend
+  - prefect.deployments.steps.set_working_directory:
+      directory: backend
+
 
 # the deployments section allows you to provide configuration for deploying flows
 deployments:
@@ -24,7 +25,7 @@ deployments:
   tags: []
   concurrency_limit: null
   description: null
-  entrypoint: etl\page_a_etl.py:run_page_a_etl
+  entrypoint: server\etl\page_a_etl.py:run_page_a_etl
   parameters: {}
   work_pool:
     name: page-a-work-pool
@@ -37,7 +38,7 @@ deployments:
     active: true
 
 - name: forecast-flow
-  entrypoint: flows/forecast_flow.py:train_forecast_models_flow
+  entrypoint: server\flows\forecast_flow.py:train_forecast_models_flow
   parameters: {}
   work_pool:
     name: page-a-work-pool
@@ -50,7 +51,7 @@ deployments:
       active: true
 
 - name: batch-predict-flow
-  entrypoint: flows/batch_predict_flow.py:run_predict_flow
+  entrypoint: server\flows/batch_predict_flow.py:run_predict_flow
   parameters: {}
   work_pool:
     name: page-a-work-pool
