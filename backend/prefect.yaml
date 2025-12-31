@@ -1,0 +1,9 @@
+pull:
+  - prefect.deployments.steps.git_clone:
+      repository: "https://github.com/Ryan3389/economy_project.git"
+      branch: "main"
+
+  - prefect.deployments.steps.run_shell_script:
+      script: |
+        cd backend
+        uv sync --frozen
