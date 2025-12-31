@@ -9,3 +9,9 @@ pull:
       script: |
         python -m pip install -U uv
         uv pip install --system -e .
+
+deployments:
+  - name: economy_summary
+    entrypoint: backend/server/etl/page_a_etl.py:run_page_a_etl
+    work_pool:
+      name: macro-economy-pool
