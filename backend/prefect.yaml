@@ -6,5 +6,6 @@ pull:
   - prefect.deployments.steps.run_shell_script:
       script: |
         pip install -U uv
+        cd backend
         uv sync --frozen
         export PATH="$(pwd)/.venv/bin:$PATH"
