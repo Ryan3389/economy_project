@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 
-from backend.server.routes.economyRoutes import economy_router
-from backend.server.routes.planRoutes import plan_router
-from backend.server.routes.forecastRoutes import forecast_router
+from server.routes.economyRoutes import economy_router
+from server.routes.planRoutes import plan_router
+from server.routes.forecastRoutes import forecast_router
 
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse

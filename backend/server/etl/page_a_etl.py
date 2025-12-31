@@ -1,5 +1,5 @@
-from backend.server.db.db import get_connection
-from backend.server.etl.fred_client import get_observations
+from server.db.db import get_connection
+from server.etl.fred_client import get_observations
 from prefect import task, flow, get_run_logger
 # from db.db import get_connection
 # from etl.fred_client import get_observations

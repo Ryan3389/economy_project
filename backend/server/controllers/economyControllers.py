@@ -1,5 +1,5 @@
 from fastapi import Request
-from backend.server.db.db import get_connection
+from server.db.db import get_connection
 # from db.db import get_connection
 from datetime import date
 
