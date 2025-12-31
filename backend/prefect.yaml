@@ -4,7 +4,8 @@ pull:
       branch: "main"
 
   - prefect.deployments.steps.run_shell_script:
-      directory: backend
       script: |
+        pwd
+        ls
         python -m pip install -U uv
         uv sync --frozen
