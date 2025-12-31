@@ -12,11 +12,6 @@ build: null
 # push section allows you to manage if and how this project is uploaded to remote locations
 push: null
 
-# pull section allows you to provide instructions for cloning this project in remote locations
-pull:
-- prefect.deployments.steps.set_working_directory:
-    directory: backend
-
 # the deployments section allows you to provide configuration for deploying flows
 deployments:
 - name: page-a-daily
