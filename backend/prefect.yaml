@@ -12,6 +12,6 @@ pull:
 
 deployments:
   - name: economy_summary
-    entrypoint: backend/server/etl/page_a_etl.py:run_page_a_etl
+    entrypoint: server/etl/page_a_etl.py:run_page_a_etl
     work_pool:
       name: macro-economy-pool
