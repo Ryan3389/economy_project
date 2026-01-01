@@ -27,3 +27,4 @@ if DIST_DIR.exists():
     def spa_fallback(full_path: str):
         index_file = DIST_DIR / "index.html"
         return FileResponse(str(index_file))
+

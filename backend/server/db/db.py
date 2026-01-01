@@ -1,9 +1,9 @@
 import psycopg2
-from server.config.config import db_dsn
+from server.config.config import db
 # from config.config import db_dsn
 
 def get_connection():
-    return psycopg2.connect(db_dsn)
+    return psycopg2.connect(db)
 
 
 def init_db():
