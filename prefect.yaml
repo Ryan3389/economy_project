@@ -8,7 +8,7 @@ pull:
       directory: "{{ clone.directory }}/backend"
       script: |
         python -m pip install -U uv
-        python -m uv sync --frozen
+        uv sync --frozen
 
 deployments:
   - name: economy_summary
