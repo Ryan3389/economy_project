@@ -8,10 +8,10 @@ pull:
       directory: "{{ clone.directory }}/backend"
       script: |
         python -m pip install -U uv
-        uv pip install --system -e .
+        python -m uv sync --frozen
 
 deployments:
   - name: economy_summary
-    entrypoint: server/etl/page_a_etl.py:run_page_a_etl
+    entrypoint: backend/server/etl/page_a_etl.py:run_page_a_etl
     work_pool:
       name: macro-economy-pool
