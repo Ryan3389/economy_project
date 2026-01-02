@@ -15,3 +15,12 @@ deployments:
     entrypoint: backend/server/etl/page_a_etl.py:run_page_a_etl
     work_pool:
       name: macro-economy-pool
+  - name: forecast-flow
+    entrypoint: backend/server/flows/forecast_flow.py:train_forecast_models_flow
+    work_pool:
+      name: macro-economy-pool
+  - name: batch-forecast-flow
+    entrypoint: backend/server/flows/batch_predict_flow.py:run_predict_flow
+    work_pool:
+      name: macro-economy-pool
+
