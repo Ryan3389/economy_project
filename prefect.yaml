@@ -26,7 +26,8 @@ pull:
       directory: "{{ clone.directory }}/backend"
       script: |
         python -m pip install -U uv
-        uv pip install --system -e .
+        uv sync --frozen
+        export PYTHONPATH="{{ clone.directory }}"
 
 deployments:
   - name: economy_summary
