@@ -77,4 +77,7 @@ def store_predictions(horizon=[1,3,6]):
 def run_predict_flow():
     store_predictions([1, 3, 6])
 
-run_predict_flow()
+
+if __name__ == "__main__":
+    run_predict_flow()
+  
