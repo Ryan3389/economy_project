@@ -1,5 +1,8 @@
 import psycopg2
+import os
 from backend.server.config.config import db
+
+print(db)
 
 def get_connection():
     return psycopg2.connect(db)
