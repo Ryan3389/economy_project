@@ -28,7 +28,7 @@ pull:
         PYTHONPATH: "{{ clone.directory }}"
       script: |
         python -m pip install -U uv
-        uv sync --frozen
+        uv sync --frozen --system
 
 deployments:
   - name: economy_summary
@@ -40,6 +40,7 @@ deployments:
     entrypoint: backend/server/flows/forecast_flow.py:train_forecast_models_flow
     work_pool:
       name: macro-economy-pool
+
 
 
   # - name: batch-forecast-flow
