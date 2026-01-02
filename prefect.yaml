@@ -24,10 +24,11 @@ pull:
 
   - prefect.deployments.steps.run_shell_script:
       directory: "{{ clone.directory }}/backend"
+      env:
+        PYTHONPATH: "{{ clone.directory }}"
       script: |
         python -m pip install -U uv
         uv sync --frozen
-        export PYTHONPATH="{{ clone.directory }}"
 
 deployments:
   - name: economy_summary
@@ -39,6 +40,7 @@ deployments:
     entrypoint: backend/server/flows/forecast_flow.py:train_forecast_models_flow
     work_pool:
       name: macro-economy-pool
+
 
   # - name: batch-forecast-flow
   #   entrypoint: backend/server/flows/batch_predict_flow.py:run_predict_flow
