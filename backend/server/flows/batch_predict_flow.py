@@ -35,14 +35,15 @@ def make_prediction(horizon=[1,3,6]):
     df = query_data()
     predictions = []
     for m in horizon:
-        model = load_model(m)
+        # model = load_model(f"LR_model_{m}m.",m)
+        model = load_model(f"LR_model_{m}m", m)
         model_prediction = model.predict(df)
         predictions.append(model_prediction)
     return predictions
 
     
 
-make_prediction()
+# make_prediction()
 
 @task(retries=3, retry_delay_seconds=10)
 def store_predictions(horizon=[1,3,6]):
