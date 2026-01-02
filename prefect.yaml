@@ -8,7 +8,7 @@ pull:
       directory: "{{ clone.directory }}/backend"
       script: |
         python -m pip install -U uv
-        uv sync --frozen
+        uv pip install --system -r pyproject.toml
 
 deployments:
   - name: economy_summary
