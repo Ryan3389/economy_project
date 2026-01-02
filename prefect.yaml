@@ -16,6 +16,19 @@
 #     work_pool:
 #       name: macro-economy-pool
 
+# pull:
+#   - prefect.deployments.steps.git_clone:
+#       id: clone
+#       repository: "https://github.com/Ryan3389/economy_project.git"
+#       branch: "main"
+
+#   - prefect.deployments.steps.run_shell_script:
+#       directory: "{{ clone.directory }}/backend"
+#       env:
+#         PYTHONPATH: "{{ clone.directory }}"
+#       script: |
+#         python -m pip install -U uv
+#         uv sync --frozen --system
 pull:
   - prefect.deployments.steps.git_clone:
       id: clone
@@ -24,12 +37,9 @@ pull:
 
   - prefect.deployments.steps.run_shell_script:
       directory: "{{ clone.directory }}/backend"
-      env:
-        PYTHONPATH: "{{ clone.directory }}"
       script: |
         python -m pip install -U uv
-        uv sync --frozen --system
-
+        uv pip install --system -e .
 deployments:
   - name: economy_summary
     entrypoint: backend/server/etl/page_a_etl.py:run_page_a_etl
