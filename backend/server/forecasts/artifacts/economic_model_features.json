@@ -1,0 +1,17 @@
+[
+    "cpi_value",
+    "interest_value",
+    "unemployment_value",
+    "cpi_mom_pct",
+    "cpi_yoy_pct",
+    "cpi_3m_avg",
+    "cpi_12m_avg",
+    "interest_rates_mom_pct",
+    "interest_rates_yoy_pct",
+    "interest_rates_3m_avg",
+    "interest_rates_12m_avg",
+    "unemployment_rate_mom_pct",
+    "unemployment_rate_yoy_pct",
+    "unemployment_rate_3m_avg",
+    "unemployment_rate_12m_avg"
+]

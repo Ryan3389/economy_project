@@ -8,10 +8,10 @@ wheels/
 .env
 .env.docker
 .python-version
-LR_model_1m.pkl
-LR_model_3m.pkl
-LR_model_6m.pkl
-economic_model_features.json
-training_metadata.json
+# LR_model_1m.pkl
+# LR_model_3m.pkl
+# LR_model_6m.pkl
+# economic_model_features.json
+# training_metadata.json
 # Virtual environments
 .venv
