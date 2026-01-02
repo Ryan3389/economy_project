@@ -2,12 +2,12 @@ import requests
 from prefect import task
 
 # from backend.server.config.config import fred_api_key
-# from backend.server.config.config import get_fred_api_key
+from backend.server.config.config import get_fred_api_key
 # from config.config import fred_api_key
-from config.config import fred_api_key
+# from config.config import fred_api_key
 
 base_url = "https://api.stlouisfed.org/fred"
-# fred_api_key = get_fred_api_key()
+fred_api_key = get_fred_api_key()
 
 # This function takes in the parameters I need to make my api requests. These will go into the url later on
 @task(retries=3, retry_delay_seconds=10)
