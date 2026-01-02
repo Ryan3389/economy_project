@@ -16,13 +16,31 @@ deployments:
     work_pool:
       name: macro-economy-pool
 
-  - name: forecast-flow
-    entrypoint: backend/server/flows/forecast_flow.py:train_forecast_models_flow
-    work_pool:
-      name: macro-economy-pool
+# pull:
+#   - prefect.deployments.steps.git_clone:
+#       id: clone
+#       repository: "https://github.com/Ryan3389/economy_project.git"
+#       branch: "main"
 
-  - name: batch-forecast-flow
-    entrypoint: backend/server/flows/batch_predict_flow.py:run_predict_flow
-    work_pool:
-      name: macro-economy-pool
+#   - prefect.deployments.steps.run_shell_script:
+#       directory: "{{ clone.directory }}/backend"
+#       script: |
+#         python -m pip install -U uv
+#         uv pip install --system -e .
+
+# deployments:
+#   - name: economy_summary
+#     entrypoint: backend/server/etl/page_a_etl.py:run_page_a_etl
+#     work_pool:
+#       name: macro-economy-pool
+
+#   - name: forecast-flow
+#     entrypoint: backend/server/flows/forecast_flow.py:train_forecast_models_flow
+#     work_pool:
+#       name: macro-economy-pool
+
+#   - name: batch-forecast-flow
+#     entrypoint: backend/server/flows/batch_predict_flow.py:run_predict_flow
+#     work_pool:
+#       name: macro-economy-pool
 
