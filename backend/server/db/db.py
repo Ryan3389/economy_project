@@ -1,10 +1,10 @@
 import psycopg2
 import os
 # from backend.server.config.config import db
-# from backend.server.config.config import get_db
-# db = get_db()
+from backend.server.config.config import get_db
+db = get_db()
 
-from backend.server.config.config import db
+# from backend.server.config.config import db
 
 
 def get_connection():
