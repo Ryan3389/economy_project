@@ -1,4 +1,4 @@
-from server.db.db import get_connection
+from backend.server.db.db import get_connection
 import pandas as pd
 import numpy as np
 import datetime

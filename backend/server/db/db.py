@@ -1,6 +1,5 @@
 import psycopg2
-from server.config.config import db
-# from config.config import db_dsn
+from backend.server.config.config import db
 
 def get_connection():
     return psycopg2.connect(db)
@@ -40,14 +39,7 @@ def init_db():
     finally:
         conn.close()
     print("Table creation executed")
-    # conn = get_connection()
-    # try:
-    #     with conn:
-    #         with conn.cursor() as cur:
-    #             cur.execute(create_table)
-    # finally:
-    #     conn.close()
-    # print("Table creation executed")
+
 
 
 

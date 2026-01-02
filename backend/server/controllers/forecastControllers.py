@@ -1,6 +1,6 @@
-from server.db.db import get_connection
+from backend.server.db.db import get_connection
 import pandas as pd
-from server.forecasts.services.model_loader import load_model
+from backend.server.forecasts.services.model_loader import load_model
 from datetime import datetime, timezone
 from decimal import Decimal
 
@@ -62,15 +62,3 @@ def store_model_predictions(timestamp, model_name, model_version, target_metric,
    finally:
        conn.close()
 
-"""
-    1. Open DB Connection
-    2. Query lastest row from economy_model_features (not the raw long table)
-    3. Build a 1 row DataFrame
-    4. Load economic_features/json
-    5. Validate NaNs (decide: block or impute)
-    6. For each requestied horizon:
-        a. Load model file for that horizon
-        b. Predict
-        c. Create a “prediction row” dict (for DB insert)
-    7. Return predictions + run_id
-    """

@@ -1,8 +1,6 @@
 from fastapi import APIRouter
-from server.controllers.economyControllers import get_economy_summary, get_metric_trends, get_economy_insights
-# from controllers.economyControllers import get_economy_summary, get_metric_trends, get_economy_insights
-from server.schemas.economyModels import EconomySummaryItem, EconomyTrendResponse, EconomyInsights
-# from schemas.economyModels import EconomySummaryItem, EconomyTrendResponse, EconomyInsights
+from backend.server.controllers.economyControllers import get_economy_summary, get_metric_trends, get_economy_insights
+from backend.server.schemas.economyModels import EconomySummaryItem, EconomyTrendResponse, EconomyInsights
 economy_router = APIRouter()
 
 

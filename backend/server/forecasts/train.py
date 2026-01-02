@@ -1,4 +1,4 @@
-from server.forecasts.data import load_features
+from backend.server.forecasts.data import load_features
 import joblib
 import json
 from datetime import datetime, timezone

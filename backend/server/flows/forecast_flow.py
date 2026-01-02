@@ -1,10 +1,8 @@
 from prefect import task, flow, get_run_logger
-# from server.forecasts.train_model import run_training_pipeline
-from server.forecasts.train_model import run_training_pipeline
-# from server.forecasts.data import load_features
-from server.forecasts.data import load_features
-from server.controllers.forecastControllers import store_model_predictions
-from server.db.db import get_connection
+from backend.server.forecasts.train_model import run_training_pipeline
+from backend.server.forecasts.data import load_features
+from backend.server.controllers.forecastControllers import store_model_predictions
+from backend.server.db.db import get_connection
 from datetime import datetime, timezone
 import pandas as pd
 

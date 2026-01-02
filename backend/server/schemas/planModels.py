@@ -31,13 +31,3 @@ class PlanningResponse(BaseModel):
     signals: Dict[str, EconomicSignal]
     insights: List[PlanningInsight]
 
-# class SnapshotResponse(BaseModel):
-#     snapshot: dict[int]
-#     signals: dict[int]
-#     insight: dict[str]
-
-# class SnapshotResponse(BaseModel):
-#     savings_rate: float
-#     monthly_buffer: float
-#     runaway_months: float
-#     pressure_level: str
