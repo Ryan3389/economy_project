@@ -3,8 +3,7 @@ from prefect import task
 
 # from backend.server.config.config import fred_api_key
 from backend.server.config.config import get_fred_api_key
-# from config.config import fred_api_key
-# from config.config import fred_api_key
+
 
 base_url = "https://api.stlouisfed.org/fred"
 fred_api_key = get_fred_api_key()
