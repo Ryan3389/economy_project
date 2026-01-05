@@ -3,7 +3,8 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import Dashboard from './pages/Dashboard.jsx'
-import PageB from './pages/PageB.jsx'
+// import PageB from './pages/PageB.jsx'
+import InsightsPage from './pages/InsightsPage.jsx'
 import ForecastPage from './pages/ForecastPage.jsx'
 
 import {createBrowserRouter, Route, RouterProvider} from "react-router-dom"
@@ -19,8 +20,8 @@ const router = createBrowserRouter([
                 element: <Dashboard/>
             },
             {
-                path: "/pageB",
-                element: <PageB/>
+                path: "/insights",
+                element: <InsightsPage/>
             },
             {
                 path: "/forecast",

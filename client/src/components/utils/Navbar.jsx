@@ -13,8 +13,8 @@ function Navbar() {
           <NavLink to="/" end className="nav-link">
             Dashboard
           </NavLink>
-          <NavLink to="/pageB" className="nav-link">
-            Page B
+          <NavLink to="/insights" className="nav-link">
+            Insights
           </NavLink>
           <NavLink to="/forecast" className="nav-link nav-link--primary">
             Forecast
@@ -26,23 +26,3 @@ function Navbar() {
 }
 
 export default Navbar;
-
-// import { Link } from "react-router-dom"
-// function Navbar(){
-//     return(
-//         <header>
-//             <nav>
-//                 <span className="nav-left">
-//                     <p>App Name</p>
-//                 </span>
-//                 <span className="nav-right">
-//                     <Link to="/">Dashboard</Link>
-//                     <Link to="pageB">Page B</Link>
-//                     <Link to="/forecast">Forecast</Link>
-//                 </span>
-//                 </nav>
-//         </header>
-//     )
-// }
-
-// export default Navbar

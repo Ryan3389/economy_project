@@ -25,6 +25,17 @@ High-level flow:
    - In batch (scheduled, stored for auditability and traceability)
 
 
+## Deployment
+This application is deployed using a container-based workflow on AWS:
+
+- The frontend and backend are bundled into a single Docker image
+- Images are stored in Amazon Elastic Container Registry (ECR)
+- The application is deployed using AWS App Runner
+- Environment-specific configuration (e.g. database connection) is injected via runtime environment variables
+- The database is hosted on a managed PostgreSQL instance (Render)
+
+
+
 
 ## Data Ingestion & Feature Engineering
 - Ingests CPI, interest rate, and unemployment series
@@ -78,12 +89,6 @@ Key validation and control mechanisms include:
 - Separation of training, batch inference, and on-demand prediction workflows
 - Persisted forecasts and training metadata to support auditability and traceability
 - Controlled model overwrite behavior during automated retraining
-<!-- - Non-null checks before training
-- Feature consistency across train/predict
-- Controlled model overwrite behavior
-- Explicit separation between training and inference
-- Deterministic feature generation via SQL views
-- Reproducible model runs via stored training metadata -->
 
 
 ## API Design

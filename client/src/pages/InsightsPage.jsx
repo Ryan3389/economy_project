@@ -3,7 +3,7 @@ import HeroCard from "../components/pageBComponents/HeroCard";
 import MetricInterpretation from "../components/pageBComponents/MetricInterpretation";
 
 
-function PageB() {
+function InsightsPage() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -79,7 +79,7 @@ function PageB() {
   );
 }
 
-export default PageB;
+export default InsightsPage
 
 
 // import { useState, useEffect } from "react";
