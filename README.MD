@@ -76,7 +76,7 @@ Model training is automated using Prefect:
 - Training metadata is persisted for traceability
 
 A separate batch prediction flow generates scheduled forecasts and stores results in the database for auditability and downstream consumption. 
-<!-- Training and inference workflows are intentionally decoupled to align with production risk model governance practices. -->
+=
 
 
 ## Data Quality, Controls & Validation
@@ -115,8 +115,10 @@ Frontend:
 - React
 
 Infrastructure:
-- Dockerized backend
-(Deployment pending/planned)
+- Docker (single container bundling frontend + backend)
+- Amazon Elastic Container Registry (ECR)
+- AWS App Runner
+- Render PostgreSQL
 
 ## What This Project Demonstrates
 This project demonstrates:
