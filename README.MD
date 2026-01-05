@@ -34,6 +34,7 @@ This application is deployed using a container-based workflow on AWS:
 - Environment-specific configuration (e.g. database connection) is injected via runtime environment variables
 - The database is hosted on a managed PostgreSQL instance (Render)
 
+DEPLOYED URL: https://yenv3s4kxi.us-east-1.awsapprunner.com/
 
 
 
