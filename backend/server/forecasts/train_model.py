@@ -6,7 +6,7 @@ from datetime import datetime, timezone
 
 import joblib
 import pandas as pd
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LinearRegression, Ridge
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 from prefect import task, flow, get_run_logger
 
@@ -55,16 +55,35 @@ def time_split(X, y, date, horizon, df, train_ratio=0.8):
 
 def train_and_eval_linear_model(X_train, y_train, X_test, y_test, horizon):
     model = LinearRegression()
+    ridge_model = Ridge(alpha=1.0)
+
     model.fit(X_train, y_train)
+    ridge_model.fit(X_train, y_train)
 
     y_pred = model.predict(X_test)
+    y_pred_ridge = ridge_model.predict(X_test)
 
     mae = mean_absolute_error(y_test, y_pred)
     mse = mean_squared_error(y_test, y_pred)
     rmse = math.sqrt(mse)
+    
+    ridge_mae = mean_absolute_error(y_test, y_pred_ridge)
+    ridge_mse = mean_squared_error(y_test, y_pred_ridge)
+    ridge_rmse = math.sqrt(ridge_mse)
 
-    metrics = {"mae": mae, "mse": mse, "rmse": rmse}
-    return model, metrics
+    metrics = {
+        "lr": {"mae": mae, "mse": mse, "rmse": rmse},
+        "ridge": {"alpha": 1.0, "mae": ridge_mae, "mse": ridge_mse, "rmse": ridge_rmse},
+    }
+    # metrics = {
+    #            "mae": mae, 
+    #            "ridge_mae": ridge_mae,
+    #            "mse": mse, 
+    #            "ridge_mse": ridge_mse,
+    #            "rmse": rmse,
+    #            "ridge_rmse": ridge_rmse
+    #            }
+    return model,ridge_model, metrics
 
 
 
@@ -81,19 +100,25 @@ def train_one_horizon(df: pd.DataFrame, horizon: int, artifacts_dir: Path, date_
         train_ratio=0.8,
     )
 
-    model, metrics = train_and_eval_linear_model(X_train, y_train, X_test, y_test, horizon)
+    model, ridge_model, metrics = train_and_eval_linear_model(X_train, y_train, X_test, y_test, horizon)
 
 
     model_path = artifacts_dir / f"LR_model_{horizon}m.pkl"
     joblib.dump(model, model_path)
 
+    ridge_model_path = artifacts_dir / f"ridge_model_{horizon}m.pkl"
+    joblib.dump(ridge_model, ridge_model_path)
+
+  
+
    
     meta = {
         "model_name": f"LR_{horizon}m",
+        "model_type": "linear_regression",
         "target": "cpi_value",
         "horizon_months": horizon,
         "trained_at": datetime.now(timezone.utc).isoformat(),
-        "metrics": metrics,
+        "metrics": metrics["lr"],
         "artifacts": {"model_file": str(model_path).replace("\\", "/")},
         "data": {
             "train_rows": len(X_train),
@@ -101,8 +126,25 @@ def train_one_horizon(df: pd.DataFrame, horizon: int, artifacts_dir: Path, date_
             "feature_count": X_train.shape[1],
         },
     }
+    ridge_meta  = {
+        "model_name": f"ridge_{horizon}m",
+        "model_type": "ridge",
+        "alpha": 1.0,
+        "target": "cpi_value",
+        "horizon_months": horizon,
+        "trained_at": datetime.now(timezone.utc).isoformat(),
+        "metrics": metrics["ridge"],
+        "artifacts": {"model_file": str(ridge_model_path).replace("\\", "/")},
+        "data": {
+            "train_rows": len(X_train),
+            "test_rows": len(X_test),
+            "feature_count": X_train.shape[1],
+        },
+    }
 
-    return meta
+   
+
+    return meta, ridge_meta
 
 
 def run_training_pipeline(horizons=(1, 3, 6)):

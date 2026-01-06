@@ -1,64 +1,139 @@
 {
     "project": "economic_forecasting",
-    "created_at": "2026-01-02T04:15:16.385891+00:00",
+    "created_at": "2026-01-06T03:06:04.993350+00:00",
     "description": "Baseline linear regression models for CPI forecasting using macroeconomic indicators",
     "runs": [
-        {
-            "model_name": "LR_1m",
-            "target": "cpi_value",
-            "horizon_months": 1,
-            "trained_at": "2026-01-02T04:15:16.376005+00:00",
-            "metrics": {
-                "mae": 0.3176899506303466,
-                "mse": 0.17919378918672227,
-                "rmse": 0.42331287387312266
+        [
+            {
+                "model_name": "LR_1m",
+                "model_type": "linear_regression",
+                "target": "cpi_value",
+                "horizon_months": 1,
+                "trained_at": "2026-01-06T03:06:04.970541+00:00",
+                "metrics": {
+                    "mae": 0.3176899506303466,
+                    "mse": 0.17919378918672227,
+                    "rmse": 0.42331287387312266
+                },
+                "artifacts": {
+                    "model_file": "C:/personal_projects/finance_project/backend/server/forecasts/artifacts/LR_model_1m.pkl"
+                },
+                "data": {
+                    "train_rows": 604,
+                    "test_rows": 152,
+                    "feature_count": 15
+                }
             },
-            "artifacts": {
-                "model_file": "C:/personal_projects/finance_project/backend/server/forecasts/artifacts/LR_model_1m.pkl"
-            },
-            "data": {
-                "train_rows": 604,
-                "test_rows": 152,
-                "feature_count": 15
+            {
+                "model_name": "ridge_1m",
+                "model_type": "ridge",
+                "alpha": 1.0,
+                "target": "cpi_value",
+                "horizon_months": 1,
+                "trained_at": "2026-01-06T03:06:04.970541+00:00",
+                "metrics": {
+                    "alpha": 1.0,
+                    "mae": 0.3189494613877185,
+                    "mse": 0.18210181443544365,
+                    "rmse": 0.4267338918289051
+                },
+                "artifacts": {
+                    "model_file": "C:/personal_projects/finance_project/backend/server/forecasts/artifacts/ridge_model_1m.pkl"
+                },
+                "data": {
+                    "train_rows": 604,
+                    "test_rows": 152,
+                    "feature_count": 15
+                }
             }
-        },
-        {
-            "model_name": "LR_3m",
-            "target": "cpi_value",
-            "horizon_months": 3,
-            "trained_at": "2026-01-02T04:15:16.381011+00:00",
-            "metrics": {
-                "mae": 0.6184940678648738,
-                "mse": 0.7865096390095775,
-                "rmse": 0.8868537867143476
+        ],
+        [
+            {
+                "model_name": "LR_3m",
+                "model_type": "linear_regression",
+                "target": "cpi_value",
+                "horizon_months": 3,
+                "trained_at": "2026-01-06T03:06:04.982219+00:00",
+                "metrics": {
+                    "mae": 0.6184940678648738,
+                    "mse": 0.7865096390095775,
+                    "rmse": 0.8868537867143476
+                },
+                "artifacts": {
+                    "model_file": "C:/personal_projects/finance_project/backend/server/forecasts/artifacts/LR_model_3m.pkl"
+                },
+                "data": {
+                    "train_rows": 604,
+                    "test_rows": 152,
+                    "feature_count": 15
+                }
             },
-            "artifacts": {
-                "model_file": "C:/personal_projects/finance_project/backend/server/forecasts/artifacts/LR_model_3m.pkl"
-            },
-            "data": {
-                "train_rows": 604,
-                "test_rows": 152,
-                "feature_count": 15
+            {
+                "model_name": "ridge_3m",
+                "model_type": "ridge",
+                "alpha": 1.0,
+                "target": "cpi_value",
+                "horizon_months": 3,
+                "trained_at": "2026-01-06T03:06:04.982219+00:00",
+                "metrics": {
+                    "alpha": 1.0,
+                    "mae": 0.617008905104378,
+                    "mse": 0.8015510411128979,
+                    "rmse": 0.8952938294844313
+                },
+                "artifacts": {
+                    "model_file": "C:/personal_projects/finance_project/backend/server/forecasts/artifacts/ridge_model_3m.pkl"
+                },
+                "data": {
+                    "train_rows": 604,
+                    "test_rows": 152,
+                    "feature_count": 15
+                }
             }
-        },
-        {
-            "model_name": "LR_6m",
-            "target": "cpi_value",
-            "horizon_months": 6,
-            "trained_at": "2026-01-02T04:15:16.385891+00:00",
-            "metrics": {
-                "mae": 0.8844624321336776,
-                "mse": 1.9885641016959628,
-                "rmse": 1.4101645654660178
+        ],
+        [
+            {
+                "model_name": "LR_6m",
+                "model_type": "linear_regression",
+                "target": "cpi_value",
+                "horizon_months": 6,
+                "trained_at": "2026-01-06T03:06:04.993350+00:00",
+                "metrics": {
+                    "mae": 0.8844624321336776,
+                    "mse": 1.9885641016959628,
+                    "rmse": 1.4101645654660178
+                },
+                "artifacts": {
+                    "model_file": "C:/personal_projects/finance_project/backend/server/forecasts/artifacts/LR_model_6m.pkl"
+                },
+                "data": {
+                    "train_rows": 604,
+                    "test_rows": 152,
+                    "feature_count": 15
+                }
             },
-            "artifacts": {
-                "model_file": "C:/personal_projects/finance_project/backend/server/forecasts/artifacts/LR_model_6m.pkl"
-            },
-            "data": {
-                "train_rows": 604,
-                "test_rows": 152,
-                "feature_count": 15
+            {
+                "model_name": "ridge_6m",
+                "model_type": "ridge",
+                "alpha": 1.0,
+                "target": "cpi_value",
+                "horizon_months": 6,
+                "trained_at": "2026-01-06T03:06:04.993350+00:00",
+                "metrics": {
+                    "alpha": 1.0,
+                    "mae": 0.8794787535317065,
+                    "mse": 1.9886437452655612,
+                    "rmse": 1.4101928042879672
+                },
+                "artifacts": {
+                    "model_file": "C:/personal_projects/finance_project/backend/server/forecasts/artifacts/ridge_model_6m.pkl"
+                },
+                "data": {
+                    "train_rows": 604,
+                    "test_rows": 152,
+                    "feature_count": 15
+                }
             }
-        }
+        ]
     ]
 }
